@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+
+   <insert id="addMember" parameterType="IsMasterDTO">
+        INSERT INTO IS_MATER (
+            USER_NO, KOR_NAME, ENG_NAME, HAN_NAME, JUMIN_NO, SAJIN_NM, BIRTH_YMD, BIRTH_RN, SEX,
+            MARRY_YN, WORK_YEAR, JOIN_ST, HOPE_WORK, ADDR, TEL, EMAIL, TECH_GRD, ALC_QT
+        ) VALUES (
+            user_no_seq.NEXTVAL, #{korName}, #{engName}, #{hanName}, #{juminNo}, #{sajinNm}, #{birthYmd}, #{birthRn}, #{sex},
+            #{marryYn}, #{workYear}, #{joinSt}, #{hopeWork}, #{addr}, #{tel}, #{email}, #{techGrd}, #{alcQt}
+        )
+    </insert>
+	<select id="getAllMembers" resultType="IsMasterDTO">
+    SELECT * FROM IS_MATER
+	</select>
+	<select id ="getMem" resultType="IsMasterDTO" parameterType="String">
+	SELECT * FROM IS_MATER where USER_NO = #{userNo}
+	</select>
+	<update id="updateMember" parameterType="IsMasterDTO">
+    UPDATE IS_MATER
+    SET 
+        KOR_NAME = #{korName},
+        ENG_NAME = #{engName},
+        HAN_NAME = #{hanName},
+        JUMIN_NO = #{juminNo},
+        SAJIN_NM = #{sajinNm},
+        BIRTH_YMD = #{birthYmd},
+        BIRTH_RN = #{birthRn},
+        SEX = #{sex},
+        MARRY_YN = #{marryYn},
+        WORK_YEAR = #{workYear},
+        JOIN_ST = #{joinSt},
+        HOPE_WORK = #{hopeWork},
+        ADDR = #{addr},
+        TEL = #{tel},
+        EMAIL = #{email},
+        TECH_GRD = #{techGrd},
+        ALC_QT = #{alcQt}
+    WHERE USER_NO = #{userNo}
+</update>
+
+	
+	
+	
+</mapper>
